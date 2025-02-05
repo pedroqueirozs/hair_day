@@ -39,8 +39,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/, //Essa é uma regra para pegar todos os arquivos .cc
+        test: /\.css$/, //Essa é uma regra para pegar todos os arquivos .css
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
     ],
   },
